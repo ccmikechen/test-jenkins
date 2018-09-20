@@ -17,7 +17,7 @@ pipeline {
             }
             steps {
                 echo 'test!'
-                echo 'ls -al'
+                sh 'ls -al'
             }
         }
         stage('develop') {
