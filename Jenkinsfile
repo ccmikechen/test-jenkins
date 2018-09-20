@@ -1,9 +1,14 @@
 pipeline {
     agent any
+
+    environment {
+        PATH = "$HOME/.asdf/shims:$PATH"
+    }
     stages {
         stage('Download') {
             steps {
                 echo env.BRANCH_NAME
+                sh "ruby -v"
             }
         }
         stage('test') {
