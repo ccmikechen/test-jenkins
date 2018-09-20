@@ -4,13 +4,14 @@ pipeline {
         stage('Download') {
             steps {
                 echo env.BRANCH_NAME
-                git url: 'https://github.com/ccmikechen/test-jenkins', branch: env.BRANCH_NAME
             }
         }
         stage('develop') {
             when { branch 'develop' }
             steps {
                 echo 'in develop!!'
+                sh 'pwd'
+                sh 'ls -al'
                 sh 'cat test'
             }
         }
