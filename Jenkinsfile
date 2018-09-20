@@ -6,13 +6,29 @@ pipeline {
                 echo env.BRANCH_NAME
             }
         }
+        stage('test') {
+            when {
+                not {
+                    anyOf {
+                        branch 'develop'
+                        branch 'master'
+                    }
+                }
+            }
+            steps {
+                echo 'test!'
+                echo 'ls -al'
+            }
+        }
         stage('develop') {
-            when { branch 'develop' }
+            when {
+                anyOf {
+                    branch 'develop'
+                    branch 'test'
+                }
+            }
             steps {
                 echo 'in develop!!'
-                sh 'pwd'
-                sh 'ls -al'
-                sh 'cat test'
             }
         }
         stage('master') {
