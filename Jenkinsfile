@@ -4,6 +4,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Hello'
+                echo 'HHHHELO'
             }
         }
         stage('develop') {
@@ -21,6 +22,7 @@ pipeline {
         stage('result') {
             steps {
                 echo 'OK'
+                echo 'OOOKK'
             }
         }
     }
